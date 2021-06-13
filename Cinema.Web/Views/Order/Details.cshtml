@@ -2,9 +2,6 @@
 
 <div class="container">
 
-	<p>
-		<a class="btn btn-success">@Model.User.Email</a>
-	</p>
 
 	@for (int i = 0; i < Model.Tickets.Count(); i++)
 	{
@@ -20,7 +17,9 @@
 					<img class="card-img-top" style="height: 50%" src="@item.TicketImage" alt="Card image cap">
 					<div class="card-body">
 						<h3>@item.TicketName</h3>
-						<p>@item.TicketPrice</p>
+						<h5>@item.TicketGenre</h5>
+						<h6>@item.TicketPrice MKD</h6>
+						<h6>@item.TicketDate</h6>
 					</div>
 
 				</div>

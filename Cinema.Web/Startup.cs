@@ -46,11 +46,13 @@ namespace Cinema.Web
             services.AddScoped(typeof(IOrderRepository), typeof(OrderRepository));
 
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
 
             services.AddTransient<IProductService, Services.Implementation.ProductService>();
             services.AddTransient<IShoppingCartService, ShoppingCartService>();
             services.AddTransient<IOrderService, Services.Implementation.OrderService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IMailService,MailService>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

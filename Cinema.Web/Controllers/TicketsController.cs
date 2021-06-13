@@ -177,7 +177,7 @@ namespace Cinema.Web.Controllers
             return View(item);
         }
 
-        public IActionResult FilterTickets(DateTime? start, DateTime? end) //ovaa e moja dopolnitelna akcija
+        public IActionResult FilterTickets(DateTime? start, DateTime? end) 
         {
 
             var tickets = _productService.getFilteredTickets(start, end);

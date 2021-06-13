@@ -71,11 +71,11 @@ namespace Cinema.Services.Implementation
             return itemToSendToView;
         }
 
-        public bool orderNow(string userId)
+        public Order orderNow(string userId)
         {
             if (!string.IsNullOrEmpty(userId))
             {
-                //Select * from Users Where Id LIKE userId
+               
 
                 var loggedInUser = this._userRepository.Get(userId);
 
@@ -107,7 +107,7 @@ namespace Cinema.Services.Implementation
 
                 var totalPrice = 0;
 
-                sb.AppendLine("Your order is completed. The order conains: ");
+                sb.AppendLine("Your order is completed. The order contains: ");
 
                 for (int i = 1; i <= result.Count(); i++)
                 {
@@ -132,12 +132,11 @@ namespace Cinema.Services.Implementation
                 this._userRepository.Update(loggedInUser);
                
 
-                return true;
+                return order;
             }
-            return false;
+            return null;
         }
     }
 
-        //order metoda treba da se impl.
     
 }
