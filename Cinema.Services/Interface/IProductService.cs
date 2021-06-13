@@ -16,5 +16,6 @@ namespace Cinema.Services.Interface
         void DeleteProduct(Guid id);
         bool AddToShoppingCart(AddToShoppingCartDTO item, string userID);
         IEnumerable<Ticket> getFilteredTickets(DateTime? start, DateTime? end);
+        IEnumerable<Ticket> GetTicketsByGenre(List<string> genres);
     }
 }

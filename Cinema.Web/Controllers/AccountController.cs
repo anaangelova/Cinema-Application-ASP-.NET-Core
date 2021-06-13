@@ -33,6 +33,7 @@ namespace Cinema.Web.Controllers
         [HttpPost, AllowAnonymous]
         public async Task<IActionResult> Register(UserRegistrationDTO request)
         {
+            
             if (ModelState.IsValid)
             {
                 var userCheck = await userManager.FindByEmailAsync(request.Email);
@@ -129,6 +130,63 @@ namespace Cinema.Web.Controllers
             await signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
+        public IActionResult Edit(Guid? id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            CinemaApplicationUser currentUser = userManager.FindByIdAsync(userId.ToString()).Result;
+            if (currentUser.isAdmin)
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                var user = userManager.FindByIdAsync(id.ToString()).Result;
 
+
+                if (user == null)
+                {
+                    return NotFound();
+                }
+                return View(user);
+            }
+            else return StatusCode(403);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Guid id, [Bind("isAdmin")] CinemaApplicationUser user)
+        {
+            
+            CinemaApplicationUser currentUser=userManager.FindByIdAsync(id.ToString()).Result;
+            if (user.isAdmin)
+            {
+                currentUser.isAdmin = true;
+            }
+            else currentUser.isAdmin = false;
+
+            await userManager.UpdateAsync(currentUser);
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Index()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            CinemaApplicationUser currentUser = userManager.FindByIdAsync(userId.ToString()).Result;
+            if (currentUser.isAdmin)
+            {
+                List<CinemaApplicationUser> users = userManager.Users.ToList();
+                return View(users);
+            }
+            else return StatusCode(403);
+         
+        }
+        public IActionResult AdminDashboard()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            CinemaApplicationUser currentUser = userManager.FindByIdAsync(userId.ToString()).Result;
+            if (currentUser.isAdmin)
+                return View();
+            else return StatusCode(403);
+        }
     }
 }

@@ -20,24 +20,16 @@
 					<partial name="_LoginPartial" />
 					<ul class="navbar-nav flex-grow-1">
 
+
 						<li class="nav-item">
-							<a class="nav-link text-dark" asp-controller="Tickets" asp-action="Index">All tickets</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="ShoppingCart" asp-action="Index">My Shopping Cart</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">My Orders</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="AdminDashboard">Admin Dashboard</a>
-						</li>
-						@*<li class="nav-item">
 							<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index">Manage Users</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Import Users</a>
-						</li>*@
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="ExportTickets">Export Tickets</a>
+						</li>
 					</ul>
 				</div>
 			</div>

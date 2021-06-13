@@ -1,0 +1,35 @@
+﻿@model List<Cinema.Domain.Identity.CinemaApplicationUser>
+@{ ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/AdminMenu.cshtml"; }
+
+<div class="container">
+	<table class="table mt-5">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Username</th>
+				<th scope="col">Admin</th>
+				<th scope="col">User ID</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@for (int i = 0; i < Model.Count; i++)
+			{
+				var item = Model[i];
+
+				<tr>
+					<th scope="row">@(i+1)</th>
+					<td>@item.UserName</td>
+					<td>@item.isAdmin</td>
+					<td>@item.Id</td>
+					<td><a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
+
+				</tr>
+			}
+		</tbody>
+
+
+	</table>
+
+</div>

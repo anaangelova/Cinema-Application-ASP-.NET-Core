@@ -50,6 +50,7 @@ namespace Cinema.Web
             services.AddTransient<IProductService, Services.Implementation.ProductService>();
             services.AddTransient<IShoppingCartService, ShoppingCartService>();
             services.AddTransient<IOrderService, Services.Implementation.OrderService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

@@ -21,5 +21,16 @@ namespace Cinema.Repository.Implementation
         {
             return entities.Where(z => z.TicketDate >= start && z.TicketDate <= end).ToList();
         }
+        public IEnumerable<Ticket> GetTicketsByGenre(List<string> genres)
+        {
+            List<Ticket> filtered = new List<Ticket>();
+            foreach(var genre in genres)
+            {
+                filtered.AddRange(entities.Where(z => z.TicketGenre.Equals(genre)).AsEnumerable());
+            }
+            return filtered;
+        }
+
+
     }
 }

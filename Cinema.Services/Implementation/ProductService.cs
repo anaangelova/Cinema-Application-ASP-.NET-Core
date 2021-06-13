@@ -100,5 +100,9 @@ namespace Cinema.Services.Implementation
         {
             return _ticketRepository.GetFilteredTickets(start, end);
         }
+        public IEnumerable<Ticket> GetTicketsByGenre(List<string> genres)
+        {
+            return _ticketRepository.GetTicketsByGenre(genres);
+        }
     }
 }

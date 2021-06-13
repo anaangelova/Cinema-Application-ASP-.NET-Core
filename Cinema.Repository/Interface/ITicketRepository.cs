@@ -8,5 +8,6 @@ namespace Cinema.Repository.Interface
     public interface ITicketRepository
     {
         IEnumerable<Ticket> GetFilteredTickets(DateTime? start, DateTime? end);
+        IEnumerable<Ticket> GetTicketsByGenre(List<string> genres);
     }
 }
